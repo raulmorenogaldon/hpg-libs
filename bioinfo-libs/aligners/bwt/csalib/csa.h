@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include "typedef.h"
+#include "../bwt_commons.h"
 
 #define VERSION 2009071800
 
@@ -57,7 +58,7 @@ typedef struct csa {
   int m; /* the number of distinct characters in the text */
   int D; /* interval between two SA values stored explicitly */
   int D2; /* interval between two inverse SA values stored explicitly */
-  i64 C[SIGMA]; /* frequency of characters */
+  i64 C[SIGMA+2]; /* frequency of characters */
   i64 K[SIGMA+2]; /* table of cumulative frequency */
   int CtoA[SIGMA];
   uchar AtoC[SIGMA]; /* table of character codes */

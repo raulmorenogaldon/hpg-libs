@@ -84,14 +84,7 @@ typedef struct bwt_err {
   char name;
 } bwt_err_t;
 
-inline bwt_err_t *bwt_err_new(int pos, char name) {
-  bwt_err_t *bwt_err = (bwt_err_t *)malloc(sizeof(bwt_err_t));
-  bwt_err->pos = pos;
-  bwt_err->name = name;
-
-  return bwt_err;
-  
-}
+bwt_err_t *bwt_err_new(int pos, char name);
 
 void bwt_err_free(bwt_err_t *p);
 
@@ -278,8 +271,7 @@ void bwt_optarg_free(bwt_optarg_t *optarg);
 //-----------------------------------------------------------------------------
 
 typedef struct {
-
-  exome karyotype;
+  exome *karyotype;
   bwt_config_t bwt_config;
   bwt_index *backward;
   bwt_index *forward;
@@ -440,6 +432,9 @@ size_t bwt_map_exact_seeds_by_region(int start_position, int end_position,
 				     char *seq, int seed_size, int min_seed_size,
 				     bwt_optarg_t *bwt_optarg, bwt_index_t *index, 
 				     array_list_t *mapping_list);
+
+void insert_seeds_and_merge(array_list_t *mapping_list, linked_list_t ***cals_list,  size_t max_cal_distance);
+
 //-----------------------------------------------------------------------------
 // cal functions
 //-----------------------------------------------------------------------------
@@ -570,7 +565,6 @@ size_t bwt_map_inexact_read_2(fastq_read_t *read,
 				    size_t read_start, size_t read_end, 
 				    size_t genome_start, size_t genome_end, 
 				    int seed_id);
-
 */
 
 //-----------------------------------------------------------------------------

@@ -102,7 +102,7 @@ typedef struct {
 		}\
 	} while(0);
 
-inline void concat_error_string(char *mask, char *mask_aux, result *r, uint8_t rr, uintmax_t *enW, bwt_config_t *bwt_config) {
+static inline void concat_error_string(char *mask, char *mask_aux, result *r, uint8_t rr, uintmax_t *enW, bwt_config_t *bwt_config) {
 
 	if      (r->err_kind[rr]==DELETION)
 		(*enW)--;
